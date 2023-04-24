@@ -6,8 +6,9 @@ import { CustomConfigModule } from './config/custom-config.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.select(CustomConfigModule).get(ConfigService);
-  app.listen(configService.get('port'), () => {
-    console.log('Application started on port: ', configService.get('port'));
+  const port = configService.get('port');
+  app.listen(port, () => {
+    console.log('Application started on port: ', port);
   });
 }
 bootstrap();
