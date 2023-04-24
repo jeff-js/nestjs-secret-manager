@@ -50,7 +50,7 @@ Replace the values with your own credentials.
 npm run dev
 ```
 
-The application should now be running on port specified in secret manager.
+The application should now be running on port specified in secret manager. To check whether the datasource is initialised or not visit the application url.
 
 ## Usage
 
