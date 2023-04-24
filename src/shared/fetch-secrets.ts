@@ -4,7 +4,7 @@ import {
 } from '@aws-sdk/client-secrets-manager';
 import { ConfigService } from '@nestjs/config';
 
-export const fetchSecrets = async () => {
+export const fetchSecrets = async (secretName: string) => {
   const configService = new ConfigService();
 
   const client = new SecretsManagerClient({
@@ -13,7 +13,7 @@ export const fetchSecrets = async () => {
   try {
     const response = await client.send(
       new GetSecretValueCommand({
-        SecretId: configService.get('AWS_SECRET_NAME'),
+        SecretId: secretName,
       }),
     );
     return JSON.parse(response.SecretString);

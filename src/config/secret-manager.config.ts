@@ -1,7 +1,10 @@
-import { fetchSecrets } from '../shared/secret-manager.service';
+import { ConfigService } from '@nestjs/config';
+import { fetchSecrets } from '../shared/fetch-secrets';
 
 export default async () => {
-  const secrets = await fetchSecrets();
+  const configService = new ConfigService();
+  const secretName = configService.get('AWS_SECRET_NAME');
+  const secrets = await fetchSecrets(secretName);
   return {
     port: +secrets.PORT,
     database: {
