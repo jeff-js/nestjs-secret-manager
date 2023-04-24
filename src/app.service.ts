@@ -13,7 +13,6 @@ export class AppService {
     this.configService = configService;
   }
   getHello(): string {
-    console.log(this.dataSource.manager.connection);
-    return this.configService.get('database');
+    return `Is datasource initialised?: ${this.dataSource.isInitialized}`;
   }
 }
