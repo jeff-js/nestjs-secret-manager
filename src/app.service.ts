@@ -13,6 +13,8 @@ export class AppService {
     this.configService = configService;
   }
   getHello(): string {
-    return `Is datasource initialised?: ${this.dataSource.isInitialized}`;
+    return `Is datasource initialised for db '${this.configService.get(
+      'database.name',
+    )}' ?: ${this.dataSource.isInitialized}`;
   }
 }
